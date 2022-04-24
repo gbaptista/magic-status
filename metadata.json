@@ -1,0 +1,26 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Name": "gbaptista"
+      }
+    ],
+    "Category": "System Information",
+    "Icon": "applications-utilities",
+    "Id": "com.github.gbaptista.magic-status",
+    "Name": "Magic Status",
+    "ServiceTypes": [
+      "Plasma/Applet"
+    ],
+    "Version": "1",
+    "Website": "https://github.com/gbaptista/magic-status",
+    "FormFactors": [
+      "tablet",
+      "handset",
+      "desktop"
+    ]
+  },
+  "X-Plasma-API": "declarativeappletscript",
+  "X-Plasma-MainScript": "ui/main.qml",
+  "X-KDE-ParentApp": "org.kde.plasmashell"
+}
