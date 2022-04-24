@@ -67,7 +67,11 @@ For a concrete example, check [my personal local API](https://github.com/gbaptis
 ## Development
 
 ```bash
+git clone https://github.com/gbaptista/magic-status.git \
+  /usr/share/plasma/plasmoids/com.github.gbaptista.magic-status
+
 cd /usr/share/plasma/plasmoids/com.github.gbaptista.magic-status
+
 plasmoidviewer -a .
 
 plasmashell --replace
