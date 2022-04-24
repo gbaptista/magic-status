@@ -46,7 +46,7 @@ You can configure it by right-clicking and _"Configure Magic Status..."_:
   <img alt="A screenshot of the configuration screen." src="https://raw.githubusercontent.com/gbaptista/assets/main/magic-status/magic-status-config.png" width="60%">
 </div>
 
-As you can display any message that you want, anything is possible. I have two endpoints on [my local API](https://github.com/gbaptista/magic-status-api), http://localhost:5000/time and http://localhost:5000/music.
+As you can display any message that you want, anything is possible. I have two endpoints on [my local API](https://github.com/gbaptista/magic-status-api), [http://localhost:5000/time](https://github.com/gbaptista/magic-status-api#time) and [http://localhost:5000/music](https://github.com/gbaptista/magic-status-api#music).
 
 The `/music` displays the current song playing:
 ```json
