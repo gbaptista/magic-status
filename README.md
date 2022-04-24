@@ -2,7 +2,12 @@
 
 A [KDE Plasma](https://kde.org/plasma-desktop/) [Widget](https://store.kde.org/browse/) to display custom status messages on [Panels](https://userbase.kde.org/Plasma/Panels).
 
+<div align="center">
+  <img alt="A screenshot of a panel with two widgets, the current time and the current song playing." src="https://raw.githubusercontent.com/gbaptista/assets/main/magic-status/magic-status-panel.png" width="40%">
+</div>
+
 - [Installing](#installing)
+- [Configuring](#configuring)
 - [Development](#development)
 
 ## Installing
@@ -54,7 +59,7 @@ The `/music` displays the current song playing:
 So, with two instances of the widget in my panel, I have the following result:
 
 <div align="center">
-  <img alt="A screenshot of a panel with two widgets, the current time and the current song playing." src="https://raw.githubusercontent.com/gbaptista/assets/main/magic-status/magic-status-panel.png" width="60%">
+  <img alt="A screenshot of a panel with two widgets, the current time and the current song playing." src="https://raw.githubusercontent.com/gbaptista/assets/main/magic-status/magic-status-panel.png" width="40%">
 </div>
 
 ## Development
