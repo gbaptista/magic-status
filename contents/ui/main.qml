@@ -14,10 +14,10 @@ MouseArea {
   Plasmoid.backgroundHints: PlasmaCore.Types.ShadowBackground | PlasmaCore.Types.ConfigurableBackground
 
   property bool pendingRequest: false
-  property int labelIndex: 0
+  property int messageIndex: 0
 
   PlasmaComponents.Label {
-    id: myLabel
+    id: messageLabel
     text: "..."
     anchors.fill: parent
     horizontalAlignment: Text.AlignHCenter
@@ -26,20 +26,22 @@ MouseArea {
   onClicked: switchLabel()
 
   function switchLabel() {
-    labelIndex = labelIndex + 1
+    messageIndex = messageIndex + 1
   }
 
   function updateWidth() {
     root.Layout.minimumWidth = PlasmaCore.Units.gridUnit * (
-      Math.ceil(myLabel.text.length / plasmoid.configuration.widthFactor)
+      Math.ceil(
+        messageLabel.text.length / Math.max(plasmoid.configuration.widthFactor, 1)
+      )
     );
   }
 
-  function updateLabel() {
+  function updateMessage() {
     if(pendingRequest) return;
 
     if(plasmoid.configuration.serverEndpoint === "") {
-      myLabel.text = '?';
+      messageLabel.text = '?';
       updateWidth();
       return;
     }
@@ -51,21 +53,23 @@ MouseArea {
     request.onreadystatechange = () => {
       if(request.readyState !== XMLHttpRequest.DONE) return;
 
-      if(request.status == 200) {
-        const result = JSON.parse(request.responseText);
+      try {
+        if(request.status == 200) {
+          const result = JSON.parse(request.responseText);
 
-        if(!result.labels[labelIndex]) labelIndex = 0;
+          if(!result.messages[messageIndex]) messageIndex = 0;
 
-        if(result.labels[labelIndex]) {
-          myLabel.text = result.labels[labelIndex];
+          if(result.messages[messageIndex]) {
+            messageLabel.text = result.messages[messageIndex];
+          } else {
+            messageLabel.text = '...';
+          }
         } else {
-          myLabel.text = '...';
+          messageLabel.text = 'offline'
         }
-      } else {
-        myLabel.text = 'offline'
-      }
 
-      updateWidth();
+        updateWidth();
+      } catch (_) {}
 
       pendingRequest = false;
     }
@@ -75,15 +79,16 @@ MouseArea {
   }
 
   Component.onCompleted: {
-    updateLabel();
+    updateWidth();
+    updateMessage();
   }
 
   Timer {
-    interval: 1
+    interval: Math.max(plasmoid.configuration.pullingInterval * 1000, 1)
     running: true
     repeat: true
     onTriggered: {
-      updateLabel()
+      updateMessage()
     }
   }
 }

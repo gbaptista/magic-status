@@ -9,5 +9,8 @@
     <entry name="widthFactor" type="Double">
       <default>2.8</default>
     </entry>
+    <entry name="pullingInterval" type="Double">
+      <default>0.001</default>
+    </entry>
   </group>
 </kcfg>

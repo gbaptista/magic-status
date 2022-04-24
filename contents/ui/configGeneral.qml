@@ -11,6 +11,7 @@ Kirigami.FormLayout {
 
   property alias cfg_serverEndpoint: serverEndpoint.text
   property alias cfg_widthFactor: widthFactor.value
+  property alias cfg_pullingInterval: pullingInterval.value
 
   TextField {
     id: serverEndpoint
@@ -22,5 +23,11 @@ Kirigami.FormLayout {
     id: widthFactor
     Kirigami.FormData.label: i18n("Width Factor:")
     decimals: 1
+  }
+
+  QtControls1.SpinBox {
+    id: pullingInterval
+    Kirigami.FormData.label: i18n("Pulling Interval (seconds):")
+    decimals: 3
   }
 }
