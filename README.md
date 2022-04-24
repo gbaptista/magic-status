@@ -8,6 +8,7 @@ A [KDE Plasma](https://kde.org/plasma-desktop/) [Widget](https://store.kde.org/b
 
 - [Installing](#installing)
 - [Configuring](#configuring)
+  - [Customizing](#customizing)
 - [Development](#development)
 
 ## Installing
@@ -63,6 +64,30 @@ So, with two instances of the widget in my panel, I have the following result:
 </div>
 
 For a concrete example, check [my personal local API](https://github.com/gbaptista/magic-status-api). I chose [Ruby](https://www.ruby-lang.org/en/), but you can build your own API with any language you want.
+
+### Customizing
+
+You can customize your messages by providing more information. To change the text color and add a progress bar:
+
+```json
+
+  "messages": [
+    {
+      "label": {
+        "text": "Carol Biazin - Inveja (Ao Vivo)",
+        "color": "#34d8eb"
+      },
+      "progress": {
+        "value": 0.63
+      }
+    }
+  ]
+}
+```
+
+<div align="center">
+  <img alt="A screenshot of a panel with the widget displaying the current song playing in a different color and a progress bar." src="https://raw.githubusercontent.com/gbaptista/assets/main/magic-status/magic-status-color.png" width="30%">
+</div>
 
 ## Development
 

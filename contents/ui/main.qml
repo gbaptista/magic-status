@@ -1,6 +1,7 @@
 // main.qml
 import QtQuick 2.6
 import QtQuick.Layouts 1.1
+import QtQuick.Controls 2.15
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.plasmoid 2.0
@@ -21,6 +22,18 @@ MouseArea {
     text: "..."
     anchors.fill: parent
     horizontalAlignment: Text.AlignHCenter
+    anchors.bottomMargin: 0
+  }
+
+  ProgressBar {
+    id: progressBar
+    value: 0.5
+    height: 2
+    visible: false
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: 1
   }
 
   onClicked: switchLabel()
@@ -37,12 +50,58 @@ MouseArea {
     );
   }
 
+  function buildMessage(inputMessage) {
+    const message = {
+      label: {
+        text: '',
+        color: PlasmaCore.ColorScope.textColor
+      },
+      progress: { value: 0.1, visible: false }
+    };
+
+    if (typeof inputMessage === 'string' || inputMessage instanceof String) {
+      message.label.text = inputMessage;
+      return message;
+    }
+
+    if(inputMessage.label) {
+      if(inputMessage.label.text) message.label.text = inputMessage.label.text;
+      if(inputMessage.label.color) message.label.color = inputMessage.label.color;
+    }
+
+    if(inputMessage.progress) {
+      if(inputMessage.progress.value) {
+        message.progress.visible = true;
+        message.progress.value = inputMessage.progress.value;
+      }
+    }
+
+    return message;
+  }
+
+  function applyMessage(inputMessage) {
+    const message = buildMessage(inputMessage);
+
+    messageLabel.text = message.label.text;
+    messageLabel.color = message.label.color;
+
+    progressBar.visible = message.progress.visible;
+    progressBar.value = message.progress.value;
+
+    if(message.progress.visible) {
+      messageLabel.anchors.bottomMargin = 5;
+    } else {
+      messageLabel.anchors.bottomMargin = 0;
+    }
+
+    updateWidth();
+  }
+
   function updateMessage() {
     if(pendingRequest) return;
 
     if(plasmoid.configuration.serverEndpoint === "") {
-      messageLabel.text = '?';
-      updateWidth();
+      applyMessage('?');
       return;
     }
 
@@ -60,15 +119,13 @@ MouseArea {
           if(!result.messages[messageIndex]) messageIndex = 0;
 
           if(result.messages[messageIndex]) {
-            messageLabel.text = result.messages[messageIndex];
+            applyMessage(result.messages[messageIndex]);
           } else {
-            messageLabel.text = '...';
+            applyMessage('...');
           }
         } else {
-          messageLabel.text = 'offline'
+          applyMessage('offline');
         }
-
-        updateWidth();
       } catch (_) {}
 
       pendingRequest = false;
@@ -79,7 +136,7 @@ MouseArea {
   }
 
   Component.onCompleted: {
-    updateWidth();
+    applyMessage('...');
     updateMessage();
   }
 
