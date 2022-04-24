@@ -46,7 +46,7 @@ You can configure it by right-clicking and _"Configure Magic Status..."_:
   <img alt="A screenshot of the configuration screen." src="https://raw.githubusercontent.com/gbaptista/assets/main/magic-status/magic-status-config.png" width="60%">
 </div>
 
-As you can display any message that you want, anything is possible. I have two endpoints on my local API, http://localhost:5000/time and http://localhost:5000/music.
+As you can display any message that you want, anything is possible. I have two endpoints on [my local API](https://github.com/gbaptista/magic-status-api), http://localhost:5000/time and http://localhost:5000/music.
 
 The `/music` displays the current song playing:
 ```json
@@ -62,7 +62,7 @@ So, with two instances of the widget in my panel, I have the following result:
   <img alt="A screenshot of a panel with two widgets, the current time and the current song playing." src="https://raw.githubusercontent.com/gbaptista/assets/main/magic-status/magic-status-panel.png" width="40%">
 </div>
 
-For a concrete example, check [my personal local API](https://github.com/gbaptista/magic-status-api#music). I chose [Ruby](https://www.ruby-lang.org/en/), but you can build your own API with any language you want.
+For a concrete example, check [my personal local API](https://github.com/gbaptista/magic-status-api). I chose [Ruby](https://www.ruby-lang.org/en/), but you can build your own API with any language you want.
 
 ## Development
 
