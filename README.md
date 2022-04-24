@@ -70,7 +70,7 @@ For a concrete example, check [my personal local API](https://github.com/gbaptis
 You can customize your messages by providing more information. To change the text color and add a progress bar:
 
 ```json
-
+{
   "messages": [
     {
       "label": {
