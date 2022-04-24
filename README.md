@@ -49,7 +49,7 @@ You can configure it by right-clicking and _"Configure Magic Status..."_:
 As you can display any message that you want, anything is possible. I have two endpoints on my local API, http://localhost:5000/time and http://localhost:5000/music.
 
 The `/music` displays the current song playing:
-```
+```json
 {
   "messages": [
     "Rival Sons - Do Your Worst"
