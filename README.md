@@ -12,7 +12,7 @@ A [KDE Plasma](https://kde.org/plasma-desktop/) [Widget](https://store.kde.org/b
 
 ## Installing
 
-```sh
+```bash
 git clone https://github.com/gbaptista/magic-status.git \
   /usr/share/plasma/plasmoids/com.github.gbaptista.magic-status
 ```
@@ -21,7 +21,7 @@ Right-click on a panel, _"Add Widgets..."_ and search for _"Magic Status"_.
 
 I don't remember, but you may need to restart _Plasma Shell_ by rebooting the computer, logoff/login, or the following command:
 
-```shell
+```bash
 plasmashell --replace
 ```
 
@@ -64,7 +64,7 @@ So, with two instances of the widget in my panel, I have the following result:
 
 ## Development
 
-```sh
+```bash
 cd /usr/share/plasma/plasmoids/com.github.gbaptista.magic-status
 plasmoidviewer -a .
 
