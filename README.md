@@ -62,6 +62,8 @@ So, with two instances of the widget in my panel, I have the following result:
   <img alt="A screenshot of a panel with two widgets, the current time and the current song playing." src="https://raw.githubusercontent.com/gbaptista/assets/main/magic-status/magic-status-panel.png" width="40%">
 </div>
 
+For a concrete example, check [my personal local API](https://github.com/gbaptista/magic-status-api#music). I chose [Ruby](https://www.ruby-lang.org/en/), but you can build your own API with any language you want.
+
 ## Development
 
 ```bash
